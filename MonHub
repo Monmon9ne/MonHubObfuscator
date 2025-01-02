@@ -1,1 +1,246 @@
-This script is in beta version
+local OrionLib = loadstring(game:HttpGet(("https://pastebin.com/raw/WRUyYTdY")))()
+
+local Window = OrionLib:MakeWindow({Name = "Mon Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://113908148449757",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+    Name = "FullBright(on = off | off = on)",
+    Default = true,
+    Callback = function(Value)
+        if Value then
+            game:GetService("Lighting").Brightness = 2
+            game:GetService("Lighting").ClockTime = 14
+            game:GetService("Lighting").FogEnd = 100000
+            game:GetService("Lighting").GlobalShadows = false
+            game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+        else
+            game:GetService("Lighting").Brightness = 10
+            game:GetService("Lighting").ClockTime = 12
+            game:GetService("Lighting").FogEnd = 10000
+            game:GetService("Lighting").GlobalShadows = true
+            game:GetService("Lighting").OutdoorAmbient = Color3.fromRGB(127, 127, 127)
+        end
+            end
+})
+
+local Section = Tab:AddSection({
+	Name = "FOV"
+})
+
+Tab:AddSlider({
+	Name = "FOV",
+	Min = 70,
+	Max = 120,
+	Default = 70,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "FOV",
+	Callback = function(Value)
+		workspace.CurrentCamera.FieldOfView = Value
+	end    
+})
+
+Tab:AddButton({
+	Name = "120 Fov!",
+	Callback = function()
+      		workspace.CurrentCamera.FieldOfView = 120
+  	end    
+})
+
+Tab:AddButton({
+	Name = "70 Fov!",
+	Callback = function()
+      		workspace.CurrentCamera.FieldOfView = 70
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Walk Speed"
+})
+
+Tab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 16,
+	Max = 250,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WalkSpeed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	end    
+})
+
+Tab:AddButton({
+	Name = "75 walkspeed!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 75
+  	end    
+})
+
+Tab:AddButton({
+	Name = "50 walkspeed!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+  	end    
+})
+
+Tab:AddButton({
+	Name = "25 walkspeed!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+  	end    
+})
+
+Tab:AddButton({
+	Name = "normal walkspeed!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Jump Power"
+})
+
+Tab:AddSlider({
+	Name = "JumpPower",
+	Min = 50,
+	Max = 500,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Power",
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+
+Tab:AddButton({
+	Name = "200 jump power!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.JumpPower = 200
+  	end    
+})
+
+Tab:AddButton({
+	Name = "150 jump power!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.JumpPower = 150
+  	end    
+})
+
+Tab:AddButton({
+	Name = "100 jump power!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.JumpPower = 100
+  	end    
+})
+
+Tab:AddButton({
+	Name = "normal jump power!",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://113908148449757",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Mon Hub"
+})
+
+Tab:AddButton({
+	Name = "Mon Hub Infinite Yield",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Monmon9ne/MonHubbeta1/refs/heads/main/MonHubInfiniteYield.txt"))()
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Other script"
+})
+
+Tab:AddButton({
+	Name = "Fly Gui V3",
+	Callback = function()
+      		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-fly-gui-v3-22133"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "KeyBoard",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "NameLess Admin",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "ShiftLock",
+	Callback = function()
+      		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-FE-Mobile-Shiftlock-Official-19126"))()
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Fisch",
+	Icon = "rbxassetid://113908148449757",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Enable Farm Script",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/Monmon9ne/MonHubbeta1/refs/heads/main/MonHubFisch.txt"))()
+  	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Fisch Spot"
+})
+
+Tab:AddButton({
+	Name = "The Depths (money farm)",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(940.6480712890625, -738.0853271484375, 1457.7685546875)
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Forsaken (Exp farm)",
+	Callback = function()
+      		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2685.795654296875, 164.65000915527344, 1735.45556640625)
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Version",
+	Icon = "rbxassetid://113908148449757",
+	PremiumOnly = false
+})
+
+Tab:AddLabel("Version : V1.1 | draggable, jump power added!")
+
+Tab:AddLabel("Version : V1.2 | added slider for FOV, WalkSpeed and jump power!")
+
+Tab:AddLabel("Version : V1.3 | Added ShiftLock script, change inf yield to mon hub")
+
+Tab:AddLabel("Version : V1.4 | Added mon hub fisch!")
+
+Tab:AddLabel("Version : V1.5 | Added Fisch Tab!")
