@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mon Hub Obfuscator</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: monospace;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      color: #00ffaa;
+    }
+    textarea {
+      width: 90%;
+      height: 200px;
+      background: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #00ffaa;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background: #00ddaa;
+    }
+    pre {
+      background: #1a1a1a;
+      padding: 15px;
+      white-space: pre-wrap;
+      border-radius: 10px;
+      text-align: left;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mon Hub Obfuscator</h1>
+  <textarea id="input" placeholder="Paste your LuaU code here..."></textarea><br>
+  <button onclick="obfuscate()">Obfuscate</button>
+  <button onclick="copy()">Copy Code</button>
+
+  <h3>Obfuscated Output</h3>
+  <pre id="output"></pre>
+
+  <script>
+    function randomVar(length = 8) {
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      let result = "";
+      for (let i = 0; i < length; i++) result += chars[Math.floor(Math.random() * chars.length)];
+      return result;
+    }
+
+    function obfuscate() {
+      const input = document.getElementById("input").value.trim();
+      if (!input) return alert("Paste your LuaU code first!");
+
+      const base64 = btoa(unescape(encodeURIComponent(input)));
+      const parts = base64.match(/.{1,5}/g); // split string
+      const concatString = parts.map(p => `"${p}"`).join("..");
+
+      const var_s = randomVar();
+      const var_d = randomVar();
+      const var_l = randomVar();
+      const var_b = randomVar();
+
+      const final = `-- This file was protect with Mon Hub Obfuscator
+
+local ${var_s} = ${concatString}
+local ${var_l} = loadstring and loadstring or load
+local ${var_b} = game:GetService("HttpService"):Base64Decode(${var_s})
+local ${var_d} = ${var_l}(${var_b})
+if ${var_d} then ${var_d}() end`;
+
+      document.getElementById("output").textContent = final;
+    }
+
+    function copy() {
+      const text = document.getElementById("output").textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Obfuscated code copied!");
+      });
+    }
+  </script>
+</body>
+</html>
